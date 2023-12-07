@@ -5,13 +5,13 @@ function Message({ message, currentUser, onMessageDelete, onUpdateMessage }) {
   const [isEditing, setIsEditing] = useState(false);
 
   const { id, username, body, created_at: createdAt } = message;
-
-  const timestamp = new Date(createdAt).toLocaleTimeString();
-
+ 
+  const timestamp = new Date(createdAt).toLocaleTimeString('en-US');
+  console.log(timestamp)
   const isCurrentUser = currentUser.username === username;
 
   function handleDeleteClick() {
-    fetch(`http://127.0.0.1:4000/messages/${id}`, {
+    fetch(`http://127.0.0.1:5001/messages/${id}`, {
       method: "DELETE",
     });
 
